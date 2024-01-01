@@ -1,16 +1,16 @@
 #!/bin/bash
-. ./chooses.sh
-. ./output.sh
-. ./single.sh
-. ./from_url.sh
-. ./url_from_file.sh
-. ./quit.sh
-. ./method_download.sh
-. ./subtitles.sh
-. ./thumbnails.sh
-. ./playlists.sh
-. ./test_variables.sh
-. ./main_yt-dlp.sh
+. $HOME/nsdv/chooses.sh
+. $HOME/nsdv/output.sh
+. $HOME/nsdv/single.sh
+. $HOME/nsdv/from_url.sh
+. $HOME/nsdv/url_from_file.sh
+. $HOME/nsdv/quit.sh
+. $HOME/nsdv/method_download.sh
+. $HOME/nsdv/subtitles.sh
+. $HOME/nsdv/thumbnails.sh
+. $HOME/nsdv/playlists.sh
+. $HOME/nsdv/test_variables.sh
+. $HOME/nsdv/main_yt-dlp.sh
 
 ## variables.
 Format_list=""

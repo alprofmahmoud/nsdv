@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./main_yt-dlp.sh
+. $PATH/nsdv/main_yt-dlp.sh
 
 fun_thumbnail(){
 	type_url=""

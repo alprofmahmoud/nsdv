@@ -4,6 +4,12 @@
 function fun_yt_dlp(){
 	if [[ -v format_id ]]
 	then
+	if test -f $HOME/urldone;
+	then
+	echo "File exists."
+	else
+	touch $HOME/urldone
+	fi
 	url_ln_nmbr=`cat $HOME/urldone | wc -l`
 	urlfile_2="$HOME/urlfile_2"
 	((url_ln_nmbr+=1))

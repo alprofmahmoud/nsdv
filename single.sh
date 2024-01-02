@@ -1,5 +1,5 @@
 #!/bin/bash
-. ./main_yt-dlp.sh
+. $PATH/nsdv/main_yt-dlp.sh
 function fun_format_list(){
 	if [ $var_show -eq 1 ] || [ $var_show -eq 3 ]
 	then

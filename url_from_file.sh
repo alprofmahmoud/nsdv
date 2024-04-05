@@ -1,27 +1,39 @@
 #!/bin/bash
+. $PATH/nsdv/search_url.sh
+. $PATH/nsdv/test_variables.sh
+. $PATH/nsdv/search_title.sh
+
 
 function fun_URL_File(){
+        rplc_mtdt_optn="--replace-in-metadata"
+        tmp_arg="title"
+        rplc_arg1="[|,｜.*]"
+        rplc_arg2="_"
+        prnt_t_fl="--print-to-file"
+        vd_nm="%(title).200B.%(ext)s"
+        fl_nm="$HOME/v_title"
+
 for ((counter=1; counter<=4; counter++)); do
 fun_options_down_from_url_file	# chosses.sh
 read options_uf
 func_test_variables_read $options_uf	# test_variables.sh
 if (test $options_uf -eq 1)
 then
-	#vi urlfile_1
-	urlfile_1="$HOME/urlfile_1"
+    fun_test_urldone_file
+    urlfile_1="$HOME/urlfile_1"
 	url_ln_nmbr=`cat $HOME/urldone | wc -l`
 
-	for url in $(cat "$urlfile_1")
+	for v_url in $(cat "$urlfile_1")
 	do
-		((url_ln_nmbr+=1))
-		printf "\e[0;36m$url_ln_nmbr \e[0m\n"
-		yt-dlp -F $url
+        total_url=`grep -c "." $HOME/urlfile_1`
+        fun_search_for_url $total_url
+		yt-dlp -F $v_url
 		echo "Enter ID formatting for video"
 		read ID_format_uf
+        Format_video="-f $ID_format_uf"
 		fun_output	# output.sh
-		Format_option="-f"
-		yt-dlp $Format_option $ID_format_uf $lcte $url
-		echo $url_ln_nmbr $url >> $HOME/urldone
+		yt-dlp $rplc_mtdt_optn "$tmp_arg" "$rplc_arg1" $rplc_arg2 $prnt_t_fl $vd_nm $fl_nm $Format_video $v_url $option_out $lcte
+        fun_search_for_title
 		sed -i 1d $HOME/urlfile_1
 	done
 break
@@ -35,16 +47,16 @@ then
 
 elif (test $options_uf -eq 8)
 then
-
-url_ln_nmbr=`cat $HOME/urldone | wc -l`
+    fun_test_urldone_file
+    url_ln_nmbr=`cat $HOME/urldone | wc -l`
 	urlfile_2="$HOME/urlfile_2"
-	for url in $(cat "$urlfile_2")
+	for v_url in $(cat "$urlfile_2")
 	do
-		((url_ln_nmbr+=1))
-		printf "\e[0;36m$url_ln_nmbr \e[0m\n"
-		echo $url_ln_nmbr $url >> $HOME/urldone
 		sed -i 1d $HOME/urlfile_2
-		yt-dlp $Format_video $url $lcte
+        total_url=`grep -c "." $HOME/urlfile_2`
+        fun_search_for_url $total_url
+		yt-dlp $rplc_mtdt_optn "$tmp_arg" "$rplc_arg1" $rplc_arg2 $prnt_t_fl $vd_nm $fl_nm $Format_video $v_url $option_out $lcte
+        fun_search_for_title
 	done
 
 

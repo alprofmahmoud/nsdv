@@ -11,6 +11,8 @@
 . $PATH/nsdv/playlists.sh
 . $PATH/nsdv/test_variables.sh
 . $PATH/nsdv/main_yt-dlp.sh
+. $PATH/nsdv/url_done.sh
+. $PATH/nsdv/search_url.sh
 
 ## variables.
 Format_list=""
@@ -32,6 +34,9 @@ var_plst_file=0
 conv_thumb=""
 ppa_thumb=""
 write_thumb=""
+prnt_t_fl=""
+vd_nm=""
+fl_nm=""
 
 fun_show_list
 read var_show
@@ -50,6 +55,9 @@ fun_thumbnail
 elif (test $var_show -eq 4)
 then
 	fun_plst_format_list_from_url
+elif (test $var_show -eq 5)
+then
+	fun_url_nmbr
 elif (test $var_show -eq 0)
 then
 	fun_download

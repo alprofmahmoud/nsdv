@@ -1,15 +1,5 @@
 #!/bi/bash
 
-## selection function method download.
-function fun_method_download(){
-echo "+---+----------------------------------------+"
-echo "|   | Methods                                |"
-echo "+---+----------------------------------------+"
-echo "| 1 | Download from URL                      |"
-echo "| 2 | Download from file                     |"
-echo "+---+----------------------------------------+"
-echo "Choose Method"
-}
 ## selection function show lists.
 function fun_show_list {
 echo "+---+----------------------------------------+"
@@ -19,10 +9,31 @@ echo "| 1 | Show formatting list                   |"
 echo "| 2 | Show subtitles list                    |"
 echo "| 3 | Download Thumbnails                    |"
 echo "| 4 | Show formatting list (playlist)        |"
+echo "| 5 | Show formatting list from url done     |"
 echo "+---+----------------------------------------+"
 echo "| 0 | skip                                   |"
 echo "+---+----------------------------------------+"
 echo "Choose option"
+}
+### selection function method download.
+function fun_method_download(){
+echo "+---+----------------------------------------+"
+echo "|   | Methods                                |"
+echo "+---+----------------------------------------+"
+echo "| 1 | Download from URL                      |"
+echo "| 2 | Download from file                     |"
+echo "+---+----------------------------------------+"
+echo "Choose Method"
+}
+# selection function method download.
+function fun_method_download(){
+echo "+---+----------------------------------------+"
+echo "|   | Methods                                |"
+echo "+---+----------------------------------------+"
+echo "| 1 | Download from URL                      |"
+echo "| 2 | Download from file                     |"
+echo "+---+----------------------------------------+"
+echo "Choose Method"
 }
 
 ## selection function options downloading URL.

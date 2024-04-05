@@ -1,7 +1,13 @@
 #!/bin/bash
+    
 
 function fun_defult_lct(){
-	lcte="-o /data/data/com.termux/files/home/storage/downloads/down_termux/%(title).200B.%(ext)s"
+
+    location="down_termux"
+    option_out="-o"
+    name_="%(title).200B.%(ext)s"
+    lcte_name_="/data/data/com.termux/files/home/storage/downloads/$location"
+	lcte="$HOME/storage/downloads/$location/$name_"
 }
 
 option1="Defult location (down_termux)"
@@ -23,7 +29,7 @@ function fun_output(){
 
 	echo "where are you want save this $type_url?"
 	echo "+---+-----------------------------------------+"
-	echo "|   | Output in                               |"
+	echo "| \\ | Output in                               |"
 	echo "+---+-----------------------------------------+"
 	echo "| 1 | $option1 $(printf '%.s ' $(seq $nmbr_spc1))|"
 	echo "| 2 | $option2 $(printf '%.s ' $(seq $nmbr_spc2))|"
@@ -53,8 +59,12 @@ function fun_output(){
 		echo "Enter output location"
 		read new_lct_out 
 		echo $new_lct_out >> $HOME/lcte_file.txt
-		lcte="-o $HOME/storage/downloads/$new_lct_out/$url_ln_nmbr%(title).200B.%(ext)s"
-		lines_n=`sed -n '$=' $HOME/lcte_file.txt`
+        location=$new_lct_out
+        option_out="-o"
+        name_="%(title).200B.%(ext)s"
+        lcte_name_="/data/data/com.termux/files/home/storage/downloads/$location"
+		lcte="$HOME/storage/downloads/$location/$name_"
+   	    lines_n=`sed -n '$=' $HOME/lcte_file.txt`
 		if (test $lines_n -eq 8)
 		then
 		:>$HOME/lcte_file.txt
@@ -67,7 +77,11 @@ function fun_output(){
 		if (test $var_out -eq $var_out_n2)
 		then
 		lct_list=`sed -n "$var_out_n1"p $HOME/lcte_file.txt`
-		lcte="-o $HOME/storage/downloads/$lct_list/%(title).200B.%(ext)s"
+        location=$lct_list
+        option_out="-o"
+        name_="%(title).200B.%(ext)s"
+        lcte_name_="/data/data/com.termux/files/home/storage/downloads/$location"
+		lcte="$HOME/storage/downloads/$location/$name_"
 	else
 		fun_exit
 	fi

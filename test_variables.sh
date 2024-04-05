@@ -10,3 +10,12 @@ else
 	#echo "var is not number" >&2; exit 1
 fi
 }
+function fun_test_urldone_file(){
+
+if test -f $HOME/urldone;
+	    then
+	    echo "File exists."
+    	else
+    	touch $HOME/urldone
+    	fi
+    }
